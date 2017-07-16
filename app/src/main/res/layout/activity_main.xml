@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="org.androidtown.hello.MainActivity">
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="197dp"
+        android:layout_height="45dp"
+        android:onClick="onButton1Clicked"
+        android:text="검색"
+        tools:layout_editor_absoluteX="31dp"
+        tools:layout_editor_absoluteY="87dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="253dp"
+        android:layout_height="111dp"
+        android:onClick="onButton2Clicked"
+        android:text="알람"
+        tools:layout_editor_absoluteX="-25dp"
+        tools:layout_editor_absoluteY="163dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="145dp"
+        android:layout_height="212dp"
+        android:onClick="onButton3Clicked"
+        android:text="내 약"
+        tools:layout_editor_absoluteX="145dp"
+        tools:layout_editor_absoluteY="253dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="97dp"
+        android:layout_height="52dp"
+        android:onClick="onButton4Clicked"
+        android:text="주변 약국"
+        tools:layout_editor_absoluteX="114dp"
+        tools:layout_editor_absoluteY="349dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="224dp"
+        android:layout_height="49dp"
+        android:onClick="onButton5Clicked"
+        android:text="진단"
+        tools:layout_editor_absoluteX="-168dp"
+        tools:layout_editor_absoluteY="434dp" />
+
+</android.support.constraint.ConstraintLayout>

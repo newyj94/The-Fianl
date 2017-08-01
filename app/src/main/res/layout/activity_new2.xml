@@ -1,14 +1,60 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8" ?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-    >
+    <Button
+        android:id= "@+id/setAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:text= "알람 설정"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true" />
 
-<Button
-    android:id= "@+id/backButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:onClick="onBackButtonClicked"
-    android:text= "돌아가기" />
+    <Button
+        android:id= "@+id/removeAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:text= "알람 해제"
+        android:layout_below="@+id/setAlarm"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"/>
 
-</LinearLayout>
+
+    <Button
+        android:id= "@+id/setTime"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:text= "시간 설정"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/removeAlarm"
+        android:layout_alignEnd="@+id/removeAlarm"
+        android:layout_alignRight="@+id/removeAlarm" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textView"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"/>
+
+    <Button
+        android:id= "@+id/repeatAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:text= "반복 알람"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/setTime"
+        android:layout_alignEnd="@+id/setTime"
+        android:layout_alignRight="@+id/removeAlarm"
+        />
+
+</RelativeLayout>

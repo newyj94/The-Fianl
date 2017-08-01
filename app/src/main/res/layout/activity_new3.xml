@@ -1,76 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:baselineAligned="false"
-    android:orientation="vertical"
-    >
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/customer"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+    ></LinearLayout>
 
     <Button
-        android:id= "@+id/backButton"
+        android:id="@+id/Button_medicine_plus"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onBackButtonClicked"
-        android:text= "돌아가기"
-        tools:ignore="HardcodedText" />
+        android:layout_height="38dp"
+        android:text="약 추가"
+        android:visibility="visible" />
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-      >
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <Spinner
-                android:id="@+id/spinner4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <Spinner
-                android:id="@+id/spinner3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <EditText
-                android:id="@+id/medinameInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textCapWords"
-                android:hint="문자"/>
-        </TableRow>
-    </TableLayout>
-
-</LinearLayout>
+    </LinearLayout>

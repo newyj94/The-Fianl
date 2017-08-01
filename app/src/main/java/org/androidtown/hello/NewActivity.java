@@ -1,5 +1,6 @@
 package org.androidtown.hello;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,8 +14,9 @@ public class NewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new);
 
     }
-public void onBackButtonClicked(View v) {
-    Toast.makeText(getApplicationContext(), " 버튼이 눌렸어요.", Toast.LENGTH_LONG).show();
+public void onButton1_3Clicked(View v) {
+    Intent intent = new Intent(getApplicationContext(),NewActivity1_3.class);
+    startActivity(intent);
     finish();
 }
 }

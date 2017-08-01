@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:id="@+id/customer"
+        android:layout_width="248dp"
+        android:layout_height="88dp"
+        android:orientation="vertical"></LinearLayout>
+
+    <Button
+        android:id="@+id/Button_medicine_plus"
+        android:layout_width="131dp"
+        android:layout_height="60dp"
+        android:text="약 추가" />
+
+</LinearLayout>

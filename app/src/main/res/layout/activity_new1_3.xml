@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    >
+    <TextView android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="센치해"/>
+    <Spinner
+        android:id="@+id/sp1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="22"/>
+
+    <Spinner
+        android:id="@+id/sp2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView android:id="@+id/text3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="33"/>
+    <Spinner
+        android:id="@+id/sp3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView android:id="@+id/text4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="44"/>
+    <Spinner
+        android:id="@+id/sp4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/medinameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="문자를 입력해주세요"
+        android:inputType="textCapWords" />
+
+
+</LinearLayout>

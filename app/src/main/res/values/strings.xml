@@ -1,3 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Hello</string>
+    <string name = "app_name">Hello</string>
+    <string name="act_med_form">약 추가</string>
+
+    <string name = "name">이름</string>
+    <string name = "medicine">약</string>
 </resources>

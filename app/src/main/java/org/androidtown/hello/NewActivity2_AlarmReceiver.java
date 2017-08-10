@@ -52,20 +52,18 @@ public class NewActivity2_AlarmReceiver extends BroadcastReceiver{
             e.printStackTrace();
         }
         notification();
-
-
     }
 
     void notification(){
         Intent intent = new Intent();
         Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        BitmapFactory.decodeResource(context.getResources(),android.R.drawable.ic_menu_gallery);
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),android.R.drawable.ic_menu_gallery);
         PendingIntent pendingIntent = PendingIntent.getActivity(context,0,intent,PendingIntent.FLAG_ONE_SHOT);
 
         NotificationCompat.Builder notificationBuilder;
         notificationBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(android.R.drawable.ic_menu_gallery)
-               //-- .setLargeIcon(Bitmap)-->
+                .setLargeIcon(bitmap)
                 .setContentTitle("알람")
                 .setContentText("알람 알람")
                 .setAutoCancel(true)
@@ -75,10 +73,5 @@ public class NewActivity2_AlarmReceiver extends BroadcastReceiver{
         NotificationManager notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0,notificationBuilder.build());
     }
-
-
-
-
-
 
 }

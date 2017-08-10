@@ -95,7 +95,7 @@ public class NewActivity2 extends AppCompatActivity {
     }
 
     void setAlarm(){
-        intent = new Intent(this, NewActivity2_AlarmReceiver.class);
+        intent = new Intent("NewActivity2_AlarmReceiver");
 
         ServicePending = PendingIntent.getBroadcast(NewActivity2.this,111,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP,Time.getTimeInMillis(),ServicePending);
@@ -119,8 +119,8 @@ public class NewActivity2 extends AppCompatActivity {
     }
 
 
-    public void onBackButtonClicked(View v) {
-        Toast.makeText(getApplicationContext(), "돌아가기 버튼이 눌렸어요.", Toast.LENGTH_LONG).show();
-        finish();
-    }
+    // public void onBackButtonClicked(View v) {
+    // Toast.makeText(getApplicationContext(), "돌아가기 버튼이 눌렸어요.", Toast.LENGTH_LONG).show();
+    //finish();
+    //  }
 }

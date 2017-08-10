@@ -43,12 +43,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/medinameInput"
+    <TextView android:id="@+id/text5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="문자를 입력해주세요"
-        android:inputType="textCapWords" />
+        android:text="55"/>
 
+    <Spinner
+        android:id="@+id/spinner_jungjae"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

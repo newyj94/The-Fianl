@@ -1,4 +1,5 @@
 package org.androidtown.hello;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -14,12 +15,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static org.androidtown.hello.R.id.text;
-
 
 public class NewActivity1_3 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    Spinner sp1,sp2,sp3,sp4,spinner;
+    Spinner sp1,sp2,sp3,sp4;
     SpinnerList list,list2,list3,list4;
     ArrayAdapter adapter1,adapter2,adapter3,adapter4;
     TextView textView1,textView2,textView3,textView4;
@@ -60,6 +59,8 @@ public class NewActivity1_3 extends AppCompatActivity implements AdapterView.OnI
         sp4.setAdapter(adapter4);
 
 
+
+
         String products[] = {"1", "2", "3", "4", "5",
                 "6", "7","8", "9", "10"};
         lv = (ListView) findViewById(R.id.list_view);
@@ -84,21 +85,21 @@ public class NewActivity1_3 extends AppCompatActivity implements AdapterView.OnI
             public void afterTextChanged(Editable editable) {
                 // TODO Auto-generated method stub
             }
+
         });
 
     }
 
-
-
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
         String medItem = list.getitems(position);
         textView1.setText(medItem);
-
     }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
         textView1.setText("선택해주세요");
-
     }
-
+    public void onButton1_3searchClicked(View v) {
+        Intent intent = new Intent(getApplicationContext(),NewActivity1_3_listitem.class);
+        startActivity(intent);
+    }
 }

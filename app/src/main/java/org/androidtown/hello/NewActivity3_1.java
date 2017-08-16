@@ -40,11 +40,10 @@ public class NewActivity3_1 extends Activity implements View.OnClickListener {
             startActivity(it);
             finish();
         }
-        EditText et_name = (EditText)findViewById(R.id.edit_name);
-        String str_name = et_name.getText().toString();
-
         EditText et_medicine = (EditText)findViewById(R.id.edit_medicine);
         String str_medicine = et_medicine.getText().toString();
+
+
 
         try{
             dbhp = new DBHelper(this);
@@ -52,7 +51,7 @@ public class NewActivity3_1 extends Activity implements View.OnClickListener {
             SQLiteDatabase sdb;
 
             sdb = dbhp.getWritableDatabase();
-            sdb.execSQL("Insert into customer values('" + str_name+"','"+str_medicine+"');");
+            sdb.execSQL("Insert into customer values(null, '"+ str_medicine +"');");
             dbhp.close();
         }catch (SQLiteException e){
 

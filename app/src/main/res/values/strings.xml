@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name = "app_name">Hello</string>
+    <string name = "app_name">삐약삐약</string>
     <string name="act_med_form">약 추가</string>
 
     <string name = "name">이름</string>
     <string name = "medicine">약</string>
+    <!--메뉴 툴바 라벨-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <!-- 메뉴 툴바 라벨 끝-->
+
     <!-- 스피너 라벨-->
     <string name ="jungjae">정제류</string>
     <string name ="color">색</string>
@@ -30,4 +37,6 @@
     </string-array>
 
     <!-- 스피너관련속성 : 끝-->
+
+
 </resources>

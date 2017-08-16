@@ -20,7 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".MainActivity"
+            android:label="삐약삐약"
+            android:theme="@style/AppTheme.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,6 +32,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewActivity"></activity>
+        <activity android:name=".NewActivity1_3"></activity>
+        <activity android:name=".NewActivity1_3_listitem"></activity>
+        <activity android:name=".NewActivity1_4"></activity>
         <activity android:name=".NewActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -49,10 +56,6 @@
         <activity android:name=".NewActivity3"></activity>
         <activity android:name=".NewActivity4"></activity>
         <activity android:name=".NewActivity5"></activity>
-        <activity android:name=".NewActivity1_1"></activity>
-        <activity android:name=".NewActivity1_2"></activity>
-        <activity android:name=".NewActivity1_3" android:windowSoftInputMode="stateHidden"></activity>
-        <activity android:name=".NewActivity1_4"></activity>
         <activity android:name=".NewActivity3_1"
             android:label="@string/act_med_form">
         </activity>

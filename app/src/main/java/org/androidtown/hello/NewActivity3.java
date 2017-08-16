@@ -32,28 +32,27 @@ public class NewActivity3 extends Activity implements View.OnClickListener {
         try{
             DBHelper dbhp = new DBHelper(this);
             SQLiteDatabase sdb = dbhp.getReadableDatabase();
-            Cursor cursor = sdb.rawQuery("Select name, medicine from customer",null);
+            Cursor cursor = sdb.rawQuery("Select medicine from customer",null);
 
             while(cursor.moveToNext()){
-                String name = cursor.getString(0);
-                String medicine = cursor.getString(1);
 
-                TextView tv_list = new TextView(this);
-                tv_list.append(name);
-                tv_list.setTextSize(20);
-                tv_list.setTextColor(Color.rgb(255,255,0));
-                tv_list.setBackgroundColor(Color.rgb(0,0,255));
-                layout.addView(tv_list);
+                String medicine = cursor.getString(0);
+
+               // TextView tv_list = new TextView(this);
+              //  tv_list.append(name);
+               // tv_list.setTextSize(20);
+               // tv_list.setTextColor(Color.rgb(255,255,0));
+               // tv_list.setBackgroundColor(Color.rgb(0,0,255));
+               // layout.addView(tv_list);
 
                 TextView tv_list2 = new TextView(this);
-
                 tv_list2.append(medicine + "\n");
                 layout.addView(tv_list2);
                 i++;
             }
             if(i==0){
                 TextView tv_desc = new TextView(this);
-                tv_desc.append("등록된 약이 없습니다");
+              //  tv_desc.append("");
                 layout.addView(tv_desc);
             }
             cursor.close();

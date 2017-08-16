@@ -9,10 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper{
 
     public DBHelper(Context context){
-        super(context,"myDB",null,1);
+        super(context,"ourDB",null,1);
     }
     public void onCreate(SQLiteDatabase data){
-        data.execSQL("CREATE TABLE customer(name TEXT PRIMARY KEY,"+" medicine TEXT AUTO INCREMENT);");
+        data.execSQL("CREATE TABLE customer(_id INTEGER PRIMARY KEY AUTOINCREMENT,"+" medicine TEXT);");
     }
     public void onUpgrade(SQLiteDatabase data, int oldVersion, int newVersion){
         data.execSQL("DROP TABLE IF EXISTS medicine");

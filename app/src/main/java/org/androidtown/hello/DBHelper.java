@@ -12,7 +12,7 @@ public class DBHelper extends SQLiteOpenHelper{
         super(context,"myDB",null,1);
     }
     public void onCreate(SQLiteDatabase data){
-        data.execSQL("CREATE TABLE customer(name TEXT PRIMARY KEY,"+" medicine TEXT AUTO INCREMENT);");
+        data.execSQL("CREATE TABLE customer(_id INTEGER PRIMARY KEY"+" AUTOINCREMENT,name TEXT PRIMARY KEY,"+" medicine TEXT);");
     }
     public void onUpgrade(SQLiteDatabase data, int oldVersion, int newVersion){
         data.execSQL("DROP TABLE IF EXISTS medicine");

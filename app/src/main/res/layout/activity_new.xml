@@ -1,15 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
-
+    >
 
     <Button
-        android:id= "@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/button1_1"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:onClick="onButton1_1Clicked"
+        android:text="성분" />
+
+    <Button
+        android:id="@+id/button1_2"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:onClick="onButton1_2Clicked"
+        android:text="먹어도좋은음식" />
+
+    <Button
+        android:id="@+id/button1_3"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
         android:onClick="onButton1_3Clicked"
-        android:text= "약모양 검색" />
+        android:text="이름" />
+
+    <Button
+        android:id="@+id/button1_4"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:onClick="onButton1_4Clicked"
+        android:text="약모양 검색" />
 
 </LinearLayout>

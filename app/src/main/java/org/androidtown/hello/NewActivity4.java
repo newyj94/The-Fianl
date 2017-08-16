@@ -10,7 +10,7 @@ public class NewActivity4 extends AppCompatActivity {
 
     private static final String API_KEY = "a99f1b05-2f53-3cb8-b7a8-8d5436cdb44c";
 
-
+/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +64,7 @@ public class NewActivity4 extends AppCompatActivity {
     }
 
 
-/*
+
     public void showMarkerPoint(){
         //마커 찍는 것 빨간 포인트
         for(int i = 0; i < m_mapPoint.size(); i++ ){

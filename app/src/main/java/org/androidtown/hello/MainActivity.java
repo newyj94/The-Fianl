@@ -95,10 +95,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-public void onButton1Clicked(View v){
-    Intent intent = new Intent(getApplicationContext(),NewActivity.class);
-    startActivity(intent);
-}
+    public void onButton1Clicked(View v){
+        Intent intent = new Intent(getApplicationContext(),NewActivity.class);
+        startActivity(intent);
+    }
     public void onButton2Clicked(View v){
         Intent intent1 = new Intent(getApplicationContext(),NewActivity2.class);
         startActivity(intent1);
@@ -116,4 +116,3 @@ public void onButton1Clicked(View v){
         startActivity(intent4);
     }
 }
-

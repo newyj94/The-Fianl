@@ -1,15 +1,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   >
-
+    android:layout_height="wrap_content"
+    android:baselineAligned="false"
+    android:layout_marginBottom="15dp"
+    android:orientation="vertical"
+    >
+    <Spinner
+        android:id="@+id/spinner_jungjae"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:id="@+id/spinner_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:id="@+id/spinner_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:id="@+id/spinner_symbol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id= "@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onButton1_3Clicked"
-        android:text= "약모양 검색" />
-
+        android:id="@+id/button1_4search"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:onClick="onButton1_4searchClicked"
+        android:text="검색" />
 </LinearLayout>

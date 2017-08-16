@@ -1,10 +1,10 @@
 package org.androidtown.hello;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Toast;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.support.v7.app.AppCompatActivity;
+        import android.view.View;
+        import android.widget.Toast;
 
 public class NewActivity extends AppCompatActivity {
 
@@ -14,9 +14,9 @@ public class NewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new);
 
     }
-public void onButton1_3Clicked(View v) {
-    Intent intent = new Intent(getApplicationContext(),NewActivity1_3.class);
-    startActivity(intent);
-    finish();
-}
+    public void onButton1_3Clicked(View v) {
+        Intent intent = new Intent(getApplicationContext(),NewActivity1_3.class);
+        startActivity(intent);
+        finish();
+    }
 }

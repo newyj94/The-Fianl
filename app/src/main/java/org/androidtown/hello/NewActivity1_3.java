@@ -1,23 +1,37 @@
 package org.androidtown.hello;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import static org.androidtown.hello.R.id.sp1;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import static org.androidtown.hello.R.id.text;
 
 
 public class NewActivity1_3 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    Spinner sp1,sp2,sp3,sp4;
+    Spinner sp1,sp2,sp3,sp4,spinner;
     SpinnerList list,list2,list3,list4;
-    ArrayAdapter adapter;
-    ArrayAdapter adapter2,adapter3,adapter4;
+    ArrayAdapter adapter1,adapter2,adapter3,adapter4;
     TextView textView1,textView2,textView3,textView4;
+
+    // List view
+    private ListView lv;
+    // Listview Adapter
+    ArrayAdapter<String> adapter;
+    // Search EditText
+    EditText inputSearch;
+    // ArrayList for Listview
+    ArrayList<HashMap<String, String>> productList;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,34 +39,57 @@ public class NewActivity1_3 extends AppCompatActivity implements AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new1_3);
 
-        sp1 = (Spinner) findViewById(R.id.sp1);
-        sp2 = (Spinner) findViewById(R.id.sp2);
-        sp3 = (Spinner) findViewById(R.id.sp3);
-        sp4 = (Spinner) findViewById(R.id.sp4);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.jungjae_array,android.R.layout.simple_spinner_item);
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp1 = (Spinner)findViewById(R.id.spinner_jungjae);
+        sp1.setAdapter(adapter1);
 
-        textView1 = (TextView) findViewById(R.id.text1);
-        textView2 = (TextView) findViewById(R.id.text2);
-        textView3 = (TextView) findViewById(R.id.text3);
-        textView4 = (TextView) findViewById(R.id.text4);
-
-        list = new SpinnerList();
-        list2 = new SpinnerList();
-        list3 = new SpinnerList();
-        list4 = new SpinnerList();
-        adapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, list.getArrayList());
-        adapter2 = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, list2.getArrayList());
-        adapter3 = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, list3.getArrayList());
-        adapter4 = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, list4.getArrayList());
-
-        sp1.setAdapter(adapter);
-        sp1.setOnItemSelectedListener(this);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.color_array,android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp2 = (Spinner)findViewById(R.id.spinner_color);
         sp2.setAdapter(adapter2);
-        sp2.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.form_array,android.R.layout.simple_spinner_item);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp3 = (Spinner)findViewById(R.id.spinner_form);
         sp3.setAdapter(adapter3);
-        sp3.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> adapter4 = ArrayAdapter.createFromResource(this, R.array.symbol_array,android.R.layout.simple_spinner_item);
+        adapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp4 = (Spinner)findViewById(R.id.spinner_symbol);
         sp4.setAdapter(adapter4);
-        sp4.setOnItemSelectedListener(this);
+
+
+        String products[] = {"1", "2", "3", "4", "5",
+                "6", "7","8", "9", "10"};
+        lv = (ListView) findViewById(R.id.list_view);
+        // Adding items to listview
+        adapter = new ArrayAdapter<String>(this, R.layout.activity_new1_3_listitem, R.id.product_name, products);
+        lv.setAdapter(adapter);
+
+
+        inputSearch = (EditText) findViewById(R.id.inputSearch);
+        inputSearch.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                // When user changed the Text
+                NewActivity1_3.this.adapter.getFilter().filter(cs);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // TODO Auto-generated method stub
+            }
+        });
+
     }
+
+
+
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
         String medItem = list.getitems(position);
         textView1.setText(medItem);

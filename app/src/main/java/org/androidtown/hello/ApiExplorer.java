@@ -1,0 +1,85 @@
+package org.androidtown.hello;
+
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabaseCorruptException;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+
+import static java.lang.Integer.toString;
+
+public class DBHelper extends SQLiteOpenHelper {
+
+    public static final String DATABASE_NAME = "oursDB.db";
+    public static final String CUSTOMER_TABLE_NAME = "customer";
+    public static final String CUSTOMER_COLUMN_ID = "id";
+    public static final String CUSTOMER_COLUMN_MEDICINE = "medicine";
+
+    public DBHelper(Context context) {
+        super(context, DATABASE_NAME, null, 1);
+    }
+
+    public void onCreate(SQLiteDatabase data) {
+        data.execSQL("CREATE TABLE customer(id INTEGER PRIMARY KEY " + " medicine TEXT);");
+    }
+
+    public void onUpgrade(SQLiteDatabase data, int oldVersion, int newVersion){
+        data.execSQL("DROP TABLE IF EXISTS customer");
+        onCreate(data);
+    }
+
+    public boolean insertCustomer(String medicine) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("medicine", medicine);
+
+        db.insert("customer", null, contentValues);
+        return true;
+
+    }
+
+    public Cursor getData(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from customer where id=" + id + "", null);
+        return res;
+
+    }
+
+    public int numberOfRows() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int numRows = (int) DatabaseUtils.queryNumEntries(db, CUSTOMER_TABLE_NAME);
+        return numRows;
+    }
+
+    public boolean updateCustomer(Integer id, String medicine) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("medicine",medicine);
+        db.update("customer",contentValues,"id = ?", new String[] {Integer.toString(id)});
+        return true;
+    }
+
+    public Integer deleteCustomer(Integer id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete("customer","id = ?", new String[] {Integer.toString(id)});
+    }
+
+    public ArrayList getAllmedicine(){
+        ArrayList array_list = new ArrayList();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from customer",null);
+        res.moveToFirst();
+        while(res.isAfterLast() == false){
+            array_list.add(res.getString(res.getColumnIndex(CUSTOMER_COLUMN_ID))+""+
+            res.getString(res.getColumnIndex(CUSTOMER_COLUMN_MEDICINE)));
+            res.moveToNext();
+        }
+        return array_list;
+    }
+}

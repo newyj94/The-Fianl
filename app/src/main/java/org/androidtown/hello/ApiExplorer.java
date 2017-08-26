@@ -1,85 +1,42 @@
 package org.androidtown.hello;
 
+import android.util.Log;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.DatabaseUtils;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabaseCorruptException;
-import android.database.sqlite.SQLiteOpenHelper;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.io.BufferedReader;
+import java.io.IOException;
 
-import java.util.ArrayList;
-
-import static java.lang.Integer.toString;
-
-public class DBHelper extends SQLiteOpenHelper {
-
-    public static final String DATABASE_NAME = "oursDB.db";
-    public static final String CUSTOMER_TABLE_NAME = "customer";
-    public static final String CUSTOMER_COLUMN_ID = "id";
-    public static final String CUSTOMER_COLUMN_MEDICINE = "medicine";
-
-    public DBHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
-    }
-
-    public void onCreate(SQLiteDatabase data) {
-        data.execSQL("CREATE TABLE customer(id INTEGER PRIMARY KEY " + " medicine TEXT);");
-    }
-
-    public void onUpgrade(SQLiteDatabase data, int oldVersion, int newVersion){
-        data.execSQL("DROP TABLE IF EXISTS customer");
-        onCreate(data);
-    }
-
-    public boolean insertCustomer(String medicine) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("medicine", medicine);
-
-        db.insert("customer", null, contentValues);
-        return true;
-
-    }
-
-    public Cursor getData(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from customer where id=" + id + "", null);
-        return res;
-
-    }
-
-    public int numberOfRows() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        int numRows = (int) DatabaseUtils.queryNumEntries(db, CUSTOMER_TABLE_NAME);
-        return numRows;
-    }
-
-    public boolean updateCustomer(Integer id, String medicine) {
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("medicine",medicine);
-        db.update("customer",contentValues,"id = ?", new String[] {Integer.toString(id)});
-        return true;
-    }
-
-    public Integer deleteCustomer(Integer id){
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete("customer","id = ?", new String[] {Integer.toString(id)});
-    }
-
-    public ArrayList getAllmedicine(){
-        ArrayList array_list = new ArrayList();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from customer",null);
-        res.moveToFirst();
-        while(res.isAfterLast() == false){
-            array_list.add(res.getString(res.getColumnIndex(CUSTOMER_COLUMN_ID))+""+
-            res.getString(res.getColumnIndex(CUSTOMER_COLUMN_MEDICINE)));
-            res.moveToNext();
+public class ApiExplorer {
+    public static void main(String[] args) throws IOException {
+        StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList"); /*URL*/
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=XtA4Wl%2FHnYeTUg902C0cFjbJBbE8W6s%2BnTzWX4J5ylYxDWLWmsTvfVss%2FQggtnMh2dfnP8Lmbc%2FN7RTj4mMRUQ%3D%3D"); /*Service Key*/
+        urlBuilder.append("&" + URLEncoder.encode("item_name","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*품목명*/
+        urlBuilder.append("&" + URLEncoder.encode("entp_name","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*업체명*/
+        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*페이지번호*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*한 페이지 결과 수*/
+        URL url = new URL(urlBuilder.toString());
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        //Log.w(String.valueOf("아이템이름과연???",String.valueOf(item_name));
+        conn.setRequestProperty("Content-type", "application/json");
+        System.out.println("Response code: " + conn.getResponseCode());
+        BufferedReader rd;
+        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        } else {
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
         }
-        return array_list;
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = rd.readLine()) != null) {
+            Log.w("line값은???",String.valueOf(line));
+            sb.append(line);
+        }
+        rd.close();
+        conn.disconnect();
+        System.out.println(sb.toString());
     }
 }

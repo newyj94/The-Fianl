@@ -1,4 +1,4 @@
-package org.androidtown.hello;
+/*package org.androidtown.hello;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
-public class NewActivity3maybe extends ActionBar {
+public class NewActivity3main extends ActionBar {
 
     private DBHelper dbhp;
     TextView medicine;
@@ -340,3 +340,4 @@ public class NewActivity3maybe extends ActionBar {
 
 }
 
+*/

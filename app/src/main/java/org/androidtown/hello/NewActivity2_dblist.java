@@ -18,7 +18,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class NewActivity2_db extends AppCompatActivity {
+public class NewActivity2_dblist extends AppCompatActivity {
 
     Calendar Time;
 
@@ -71,8 +71,8 @@ public class NewActivity2_db extends AppCompatActivity {
                         removeAlarm();
                         break;
                     case R.id.setTime:
-                        new TimePickerDialog(NewActivity2_db.this, sTimeSetListener, Time.get(Calendar.HOUR_OF_DAY),Time.get(Calendar.MINUTE),false).show();
-                        new DatePickerDialog(NewActivity2_db.this, eDateSetListener, Time.get(Calendar.YEAR),Time.get(Calendar.MONTH),Time.get(Calendar.DAY_OF_MONTH)).show();
+                        new TimePickerDialog(NewActivity2_dblist.this, sTimeSetListener, Time.get(Calendar.HOUR_OF_DAY),Time.get(Calendar.MINUTE),false).show();
+                        new DatePickerDialog(NewActivity2_dblist.this, eDateSetListener, Time.get(Calendar.YEAR),Time.get(Calendar.MONTH),Time.get(Calendar.DAY_OF_MONTH)).show();
                         break;
                     case R.id.repeatAlarm:
                         setRepeatAlarm();
@@ -97,21 +97,21 @@ public class NewActivity2_db extends AppCompatActivity {
     void setAlarm(){
         intent = new Intent("NewActivity2_AlarmReceiver");
 
-        ServicePending = PendingIntent.getBroadcast(NewActivity2_db.this,111,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        ServicePending = PendingIntent.getBroadcast(NewActivity2_dblist.this,111,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.set(AlarmManager.RTC_WAKEUP,Time.getTimeInMillis(),ServicePending);
         Toast.makeText(getBaseContext(),"알람 설정"+Time.getTime(),Toast.LENGTH_SHORT).show();
     }
 
     void removeAlarm(){
         intent = new Intent("AlarmReceiver");
-        ServicePending = PendingIntent.getBroadcast(NewActivity2_db.this,111,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        ServicePending = PendingIntent.getBroadcast(NewActivity2_dblist.this,111,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         Toast.makeText(getBaseContext(),"알람 해제"+Time.getTime(),Toast.LENGTH_SHORT).show();
         alarmManager.cancel(ServicePending);
     }
 
     void setRepeatAlarm(){
         intent = new Intent("AlarmReceiver");
-        ServicePending = PendingIntent.getBroadcast(NewActivity2_db.this,111,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        ServicePending = PendingIntent.getBroadcast(NewActivity2_dblist.this,111,intent,PendingIntent.FLAG_UPDATE_CURRENT);
         Log.d("ServicePending : ",""+ServicePending.toString());
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,Time.getTimeInMillis(),20000,ServicePending);
         Toast.makeText(getBaseContext(),"알람 설정"+Time.getTime(),Toast.LENGTH_SHORT).show();

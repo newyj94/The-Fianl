@@ -1,4 +1,4 @@
-package org.androidtown.hello;
+/*package org.androidtown.hello;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
-public class NewActivity3maybe extends Activity {
+public class NewActivity3_display extends Activity {
 
     private DBHelper dbhp;
     TextView medicine;
@@ -103,3 +103,4 @@ public class NewActivity3maybe extends Activity {
     }
 }
 
+*/

@@ -27,18 +27,25 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewActivity"></activity>
-        <activity android:name=".NewActivity1_3"></activity>
+        <activity android:name=".NewActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+        </intent-filter>
+        </activity>
+
+        <activity android:name=".NewActivity1_3"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".NewActivity1_3_listitem"></activity>
-        <activity android:name=".NewActivity1_4"></activity>
-        <activity android:name=".NewActivity2">
+        <activity android:name=".NewActivity1_4"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".NewActivity2"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.NewActivity2"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
@@ -55,10 +62,18 @@
          </receiver>
 
         <activity android:name=".NewActivity3"></activity>
+        <!--
         <activity android:name=".NewActivity3_display"></activity>
         <activity android:name=".NewActivity3main"></activity>
-        <activity android:name=".NewActivity4"></activity>
-        <activity android:name=".NewActivity5"></activity>
+        -->
+        <activity android:name=".NewActivity4"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.NewActivity4" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".NewActivity5"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".NewActivity2_db"></activity>
         <activity android:name=".NewActivity2_dblist" android:label="알람 추가"></activity>
         <activity android:name=".NewActivity3_1"

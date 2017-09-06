@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent1 = new Intent(getApplicationContext(),NewActivity2.class);
             startActivity(intent1);
         } else if (id == R.id.nav_mypage) {
-            Intent intent2 = new Intent(getApplicationContext(),NewActivity3.class);
+            Intent intent2 = new Intent(getApplicationContext(),NewActivity3main.class);
             startActivity(intent2);
         } else if (id == R.id.nav_near_pharm) {
             Intent intent3 = new Intent(getApplicationContext(),NewActivity4.class);
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent1);
     }
     public void onButton3Clicked(View v){
-        Intent intent2 = new Intent(getApplicationContext(),NewActivity3.class);
+        Intent intent2 = new Intent(getApplicationContext(),NewActivity3main.class);
         startActivity(intent2);
     }
     public void onButton4Clicked(View v){

@@ -90,7 +90,7 @@ public class NewActivity extends AppCompatActivity implements NavigationView.OnN
             Intent intent1 = new Intent(getApplicationContext(), NewActivity2.class);
             startActivity(intent1);
         } else if (id == R.id.nav_mypage) {
-            Intent intent2 = new Intent(getApplicationContext(), NewActivity3.class);
+            Intent intent2 = new Intent(getApplicationContext(), NewActivity3main.class);
             startActivity(intent2);
         } else if (id == R.id.nav_near_pharm) {
             Intent intent3 = new Intent(getApplicationContext(), NewActivity4.class);

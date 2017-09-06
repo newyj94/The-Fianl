@@ -1,343 +1,94 @@
-/*package org.androidtown.hello;
 
-import android.app.ActionBar;
+package org.androidtown.hello;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+import java.util.ArrayList;
+import java.util.List;
 
-public class NewActivity3main extends ActionBar {
 
-    private DBHelper dbhp;
+public class NewActivity3main extends AppCompatActivity implements View.OnClickListener {
+
     TextView medicine;
 
-    int _id = 0;
+    int id = 0;
+    ListView myListView;
+    DBHelper dbhp;
+    ArrayAdapter mAdapter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new3);
-        medicine = (TextView) medicine.findViewById(R.id.edit_medicine);
+        setContentView(R.layout.activity_new3_main);
         dbhp = new DBHelper(this);
+        ArrayList array_list = dbhp.getAllmedicine();
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            int Value = extras.getInt("_id");
-            if (Value > 0) {
-                Cursor rs = dbhp.getData(Value);
-                _id = Value;
-                rs.moveToFirst();
-                String n = rs.getString(rs.getColumnIndex(DBHelper.CUSTOMER_COLUMN_MEDICINE));
-                if (!rs.isClosed()) {
-                    rs.close();
-                }
-                Button b = (Button) findViewById(R.id.button1);
-                b.setVisibility(View.INVISIBLE);
+        mAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array_list);
 
-                medicine.setText((CharSequence) m);
-            }
-        }
+        myListView = (ListView) findViewById(R.id.listView1);
+        myListView.setAdapter(mAdapter);
 
+        //myListView.setOnItemClickListener(mItemClickListener);
+
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
+
+               int id = 0;
+               Log.w("id값은들어가나???", Integer.toString(id));
+               String item = (String) ((ListView) parent).getItemAtPosition(position);
+               String[] strArray = item.split(" ");
+               //  firstId = strArray[0];
+
+               SQLiteDatabase sdb = dbhp.getReadableDatabase();
+               Cursor cursor = sdb.rawQuery("Select id from customer where medicine = '" + item + "';", null);
+               while (cursor.moveToNext()) {
+                   id = cursor.getInt(0);
+                   Log.w("idddd???", Integer.toString(id));
+               }
+               Bundle dataBundle = new Bundle();
+               dataBundle.putInt("id", id);
+               Intent intent = new Intent(getApplicationContext(), NewActivity3_display.class);
+               intent.putExtras(dataBundle);
+               startActivity(intent);
+           }
+       });
     }
 
-    public void insert(View view) {
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            int Value = extras.getInt("_id");
-            if (Value > 0) {
-                if (dbhp.updateCustomer(_id, medicine.getText().toString())) {
-                    Toast.makeText(getApplicationContext, "수정되었음", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), NewActivity3.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(getApplicationContext(), "수정되지 않았음", Toast.LENGTH_SHORT).show();
-                }else{
-                    if (dbhp.insertCustomer(medicine.getText().toString())) {
-                        Toast.makeText(getApplicationContext(), "추가되었음", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "추가되지 않았음", Toast.LENGTH_SHORT).show();
-                    }
-                    finish();
-                }
-            }
-        }
 
-    }
-    public void delete(View view) {
 
-            Bundle extras = getIntent().getExtras();
-            if (extras != null) {
-                int Value = extras.getInt("_id");
-                if (Value > 0) {
-                dbhp.deleteMedicine(_id)
-                        Toast.makeText(getApplicationContext, "삭제되었음", Toast.LENGTH_SHORT).show();
-                finish();
-                } else {
-                        Toast.makeText(getApplicationContext(), "삭제되지 않았음", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-    public void edit(View view) {
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            int Value = extras.getInt("_id");
-            if (Value > 0) {
-                if (dbhp.updateCustomer(_id, medicine.getText().toString())) {
-                Toast.makeText(getApplicationContext, "수정되었음", Toast.LENGTH_SHORT).show();
-                finish();
-            } else {
-                Toast.makeText(getApplicationContext(), "수정되지 않았음", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-    }
-    @Override
-    public void setCustomView(View view) {
-
+    protected void onResume() {
+        super.onResume();
+        mAdapter.clear();
+        mAdapter.addAll(dbhp.getAllmedicine());
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
-    public void setCustomView(View view, LayoutParams layoutParams) {
-
+    public void onClick(View view) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("id",0);
+        Intent intent = new Intent(getApplicationContext(), NewActivity3_display.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
-
-    @Override
-    public void setCustomView(int resId) {
-
-    }
-
-    @Override
-    public void setIcon(int resId) {
-
-    }
-
-    @Override
-    public void setIcon(Drawable icon) {
-
-    }
-
-    @Override
-    public void setLogo(int resId) {
-
-    }
-
-    @Override
-    public void setLogo(Drawable logo) {
-
-    }
-
-    @Override
-    public void setListNavigationCallbacks(SpinnerAdapter adapter, OnNavigationListener callback) {
-
-    }
-
-    @Override
-    public void setSelectedNavigationItem(int position) {
-
-    }
-
-    @Override
-    public int getSelectedNavigationIndex() {
-        return 0;
-    }
-
-    @Override
-    public int getNavigationItemCount() {
-        return 0;
-    }
-
-    @Override
-    public void setTitle(CharSequence title) {
-
-    }
-
-    @Override
-    public void setTitle(int resId) {
-
-    }
-
-    @Override
-    public void setSubtitle(CharSequence subtitle) {
-
-    }
-
-    @Override
-    public void setSubtitle(int resId) {
-
-    }
-
-    @Override
-    public void setDisplayOptions(int options) {
-
-    }
-
-    @Override
-    public void setDisplayOptions(int options, int mask) {
-
-    }
-
-    @Override
-    public void setDisplayUseLogoEnabled(boolean useLogo) {
-
-    }
-
-    @Override
-    public void setDisplayShowHomeEnabled(boolean showHome) {
-
-    }
-
-    @Override
-    public void setDisplayHomeAsUpEnabled(boolean showHomeAsUp) {
-
-    }
-
-    @Override
-    public void setDisplayShowTitleEnabled(boolean showTitle) {
-
-    }
-
-    @Override
-    public void setDisplayShowCustomEnabled(boolean showCustom) {
-
-    }
-
-    @Override
-    public void setBackgroundDrawable(Drawable d) {
-
-    }
-
-    @Override
-    public View getCustomView() {
-        return null;
-    }
-
-    @Override
-    public CharSequence getTitle() {
-        return null;
-    }
-
-    @Override
-    public CharSequence getSubtitle() {
-        return null;
-    }
-
-    @Override
-    public int getNavigationMode() {
-        return 0;
-    }
-
-    @Override
-    public void setNavigationMode(int mode) {
-
-    }
-
-    @Override
-    public int getDisplayOptions() {
-        return 0;
-    }
-
-    @Override
-    public Tab newTab() {
-        return null;
-    }
-
-    @Override
-    public void addTab(Tab tab) {
-
-    }
-
-    @Override
-    public void addTab(Tab tab, boolean setSelected) {
-
-    }
-
-    @Override
-    public void addTab(Tab tab, int position) {
-
-    }
-
-    @Override
-    public void addTab(Tab tab, int position, boolean setSelected) {
-
-    }
-
-    @Override
-    public void removeTab(Tab tab) {
-
-    }
-
-    @Override
-    public void removeTabAt(int position) {
-
-    }
-
-    @Override
-    public void removeAllTabs() {
-
-    }
-
-    @Override
-    public void selectTab(Tab tab) {
-
-    }
-
-    @Override
-    public Tab getSelectedTab() {
-        return null;
-    }
-
-    @Override
-    public Tab getTabAt(int index) {
-        return null;
-    }
-
-    @Override
-    public int getTabCount() {
-        return 0;
-    }
-
-    @Override
-    public int getHeight() {
-        return 0;
-    }
-
-    @Override
-    public void show() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public boolean isShowing() {
-        return false;
-    }
-
-    @Override
-    public void addOnMenuVisibilityListener(OnMenuVisibilityListener listener) {
-
-    }
-
-    @Override
-    public void removeOnMenuVisibilityListener(OnMenuVisibilityListener listener) {
-
-    }
-
-
 }
 
-*/
+

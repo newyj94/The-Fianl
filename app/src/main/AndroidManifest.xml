@@ -21,6 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity android:name=".MainActivity"
             android:label="삐약삐약"
             android:theme="@style/AppTheme.NoActionBar">
@@ -39,7 +43,6 @@
 
         <activity android:name=".NewActivity1_3"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".NewActivity1_3_listitem"></activity>
         <activity android:name=".NewActivity1_4"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".NewActivity2"
@@ -60,13 +63,9 @@
                  <action android:name="NewActivity2_AlarmReceiver"></action>
              </intent-filter>
          </receiver>
-
-        <activity android:name=".NewActivity3"></activity>
-        <!--
         <activity android:name=".NewActivity3_display"></activity>
         <activity android:name=".NewActivity3main"></activity>
-        -->
-        <activity android:name=".NewActivity4"
+                <activity android:name=".NewActivity4"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.NewActivity4" />
@@ -76,9 +75,6 @@
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".NewActivity2_db"></activity>
         <activity android:name=".NewActivity2_dblist" android:label="알람 추가"></activity>
-        <activity android:name=".NewActivity3_1"
-            android:label="@string/act_med_form">
-        </activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-/*package org.androidtown.hello;
+package org.androidtown.hello;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -22,46 +22,47 @@ public class NewActivity3_display extends Activity {
     private DBHelper dbhp;
     TextView medicine;
 
-    int _id = 0;
+    int id = 0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new3);
-        medicine = (TextView) medicine.findViewById(R.id.edit_medicine);
+        setContentView(R.layout.activity_new3_display);
+       medicine = (TextView)findViewById(R.id.editTextMedicine);
         dbhp = new DBHelper(this);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            int Value = extras.getInt("_id");
+            int Value = extras.getInt("id");
             if (Value > 0) {
                 Cursor rs = dbhp.getData(Value);
-                _id = Value;
+                id = Value;
                 rs.moveToFirst();
-                String n = rs.getString(rs.getColumnIndex(DBHelper.CUSTOMER_COLUMN_MEDICINE));
+                String m = rs.getString(rs.getColumnIndex(DBHelper.CUSTOMER_COLUMN_MEDICINE));
                 if (!rs.isClosed()) {
                     rs.close();
                 }
-                Button b = (Button) findViewById(R.id.button1);
+                Button b = (Button)findViewById(R.id.savebtn);
                 b.setVisibility(View.INVISIBLE);
-
                 medicine.setText((CharSequence) m);
+
             }
         }
-
     }
 
     public void insert(View view) {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            int Value = extras.getInt("_id");
+            int Value = extras.getInt("id");
             if (Value > 0) {
-                if (dbhp.updateCustomer(_id, medicine.getText().toString())) {
+                if (dbhp.updateCustomer(id, medicine.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "수정되었음", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), NewActivity3.class);
+                    Intent intent = new Intent(getApplicationContext(), NewActivity3main.class);
                     startActivity(intent);
-                } else{
+                } else {
                     Toast.makeText(getApplicationContext(), "수정되지 않았음", Toast.LENGTH_SHORT).show();
-                }else {
+                }
+            }
+                else {
                     if (dbhp.insertCustomer(medicine.getText().toString())) {
                         Toast.makeText(getApplicationContext(), "추가되었음", Toast.LENGTH_SHORT).show();
                     } else {
@@ -71,36 +72,34 @@ public class NewActivity3_display extends Activity {
                 }
             }
         }
-    }
     public void delete(View view) {
 
-            Bundle extras = getIntent().getExtras();
-            if (extras != null) {
-                int Value = extras.getInt("_id");
-                if (Value > 0) {
-                dbhp.deleteMedicine(_id);
-                        Toast.makeText(getApplicationContext(), "삭제되었음", Toast.LENGTH_SHORT).show();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            int Value = extras.getInt("id");
+            if (Value > 0) {
+                dbhp.deleteCustomer(id);
+                Toast.makeText(getApplicationContext(), "삭제되었음", Toast.LENGTH_SHORT).show();
                 finish();
-                } else {
-                        Toast.makeText(getApplicationContext(), "삭제되지 않았음", Toast.LENGTH_SHORT).show();
-                    }
-                }
+            } else {
+                Toast.makeText(getApplicationContext(), "삭제되지 않았음", Toast.LENGTH_SHORT).show();
             }
+        }
+    }
     public void edit(View view) {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            int Value = extras.getInt("_id");
+            int Value = extras.getInt("id");
             if (Value > 0) {
-                if (dbhp.updateCustomer(_id, medicine.getText().toString())) {
-                Toast.makeText(getApplicationContext(), "수정되었음", Toast.LENGTH_SHORT).show();
-                finish();
-            } else {
-                Toast.makeText(getApplicationContext(), "수정되지 않았음", Toast.LENGTH_SHORT).show();
+                if (dbhp.updateCustomer(id, medicine.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "수정되었음", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "수정되지 않았음", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
-    }
 }
 
-*/

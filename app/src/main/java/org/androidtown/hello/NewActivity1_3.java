@@ -97,7 +97,7 @@ public class NewActivity1_3 extends AppCompatActivity implements AdapterView.OnI
         textView1.setText("선택해주세요");
     }
     public void onButton1_3searchClicked(View v) {
-        Intent intent = new Intent(getApplicationContext(),NewActivity1_3_listitem.class);
+        Intent intent = new Intent(getApplicationContext(),NewActivity1_3.class);
         startActivity(intent);
     }
 
@@ -151,7 +151,7 @@ public class NewActivity1_3 extends AppCompatActivity implements AdapterView.OnI
             Intent intent1 = new Intent(getApplicationContext(),NewActivity2.class);
             startActivity(intent1);
         } else if (id == R.id.nav_mypage) {
-            Intent intent2 = new Intent(getApplicationContext(),NewActivity3.class);
+            Intent intent2 = new Intent(getApplicationContext(),NewActivity3main.class);
             startActivity(intent2);
         } else if (id == R.id.nav_near_pharm) {
             Intent intent3 = new Intent(getApplicationContext(),NewActivity4.class);

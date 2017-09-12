@@ -21,7 +21,7 @@
         android:inputType = "text"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:text="약 추가"
+        android:text=""
         android:layout_marginTop="5dp"
         android:layout_marginLeft="82dp"
         android:layout_alignParentEnd="true">

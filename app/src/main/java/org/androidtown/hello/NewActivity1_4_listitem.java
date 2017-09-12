@@ -2,26 +2,23 @@ package org.androidtown.hello;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class NewActivity1_4 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class NewActivity1_4_listitem extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner sp1,sp2,sp3,sp4;
     SpinnerList list,list2,list3,list4;
     ArrayAdapter adapter1,adapter2,adapter3,adapter4;
-    TextView textView1;
+
 
     // List view
     private ListView lv;
@@ -68,7 +65,7 @@ public class NewActivity1_4 extends AppCompatActivity implements AdapterView.OnI
         inputSearch.setText(medItem);
     }
     public void onNothingSelected(AdapterView<?> parent) {
-        textView1.setText("선택해주세요");
+        //textView1.setText("선택해주세요");
     }
 
     public void onButton1_4search(View v) {

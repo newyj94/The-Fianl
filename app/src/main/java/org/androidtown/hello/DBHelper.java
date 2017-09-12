@@ -23,9 +23,12 @@ public class DBHelper extends SQLiteOpenHelper{
     public static final String CUSTOMER_TABLE_NAME = "customer";
     public static final String CUSTOMER_COLUMN_ID = "id";
     public static final String CUSTOMER_COLUMN_MEDICINE = "medicine";
+    public static final String CUSTOMER_COLUMN_NICKNAME = "nickname";
+
+
 
     public void onCreate(SQLiteDatabase data) {
-        data.execSQL("CREATE TABLE customer(id INTEGER PRIMARY KEY ," + " medicine TEXT);");
+        data.execSQL("CREATE TABLE customer(id INTEGER PRIMARY KEY ," + " medicine TEXT," + " nickname TEXT);");
 
     }
 
@@ -42,6 +45,7 @@ public class DBHelper extends SQLiteOpenHelper{
         return true;
 
     }
+
 
     public Cursor getData(int id) {
         SQLiteDatabase db = this.getReadableDatabase();

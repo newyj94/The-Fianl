@@ -109,7 +109,13 @@ public class NewActivity extends AppCompatActivity implements NavigationView.OnN
 
 
     public void onButton1_3Clicked(View v){
-        Intent intent = new Intent(getApplicationContext(),NewActivity1_3.class);
+        Intent intent1 = new Intent(getApplicationContext(),NewActivity1_3.class);
+        startActivity(intent1);
+        finish();
+    }
+
+    public void onButton1_4licked(View v){
+        Intent intent = new Intent(getApplicationContext(),NewActivity1_4.class);
         startActivity(intent);
         finish();
     }

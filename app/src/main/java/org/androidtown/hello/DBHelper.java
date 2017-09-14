@@ -31,7 +31,6 @@ public class DBHelper extends SQLiteOpenHelper{
 
     public void onCreate(SQLiteDatabase data) {
         data.execSQL("CREATE TABLE customer(id INTEGER PRIMARY KEY ," + " medicine TEXT," + " nickname TEXT);");
-
     }
 
     public void onUpgrade(SQLiteDatabase data, int oldVersion, int newVersion){
@@ -40,16 +39,14 @@ public class DBHelper extends SQLiteOpenHelper{
     }
 
     public boolean insertCustomer(String medicine, String nickname) {
-        String akak = "하하";
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("medicine", medicine);
         db.insert("customer", null, contentValues);
-        Log.w("하하값은???",akak );
         contentValues.put("nickname", nickname);
         db.insert("customer", null, contentValues);
         return true;
-
     }
 
 
@@ -90,9 +87,20 @@ public class DBHelper extends SQLiteOpenHelper{
         res.moveToFirst();
         while(res.isAfterLast() == false){
             array_list.add( res.getString(res.getColumnIndex(CUSTOMER_COLUMN_MEDICINE)));
-            array_list.add( res.getString(res.getColumnIndex(CUSTOMER_COLUMN_NICKNAME)));
             res.moveToNext();
         }
+        res.close();
         return array_list;
+    }
+    public ArrayList getAllnickname(){
+        ArrayList array_list2 = new ArrayList();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from customer",null);
+        res.moveToFirst();
+        while(res.isAfterLast() == false){
+//            array_list2.add( res.getString(res.getColumnIndex(CUSTOMER_COLUMN_NICKNAME)));
+            res.moveToNext();
+        }
+        return array_list2;
     }
 }

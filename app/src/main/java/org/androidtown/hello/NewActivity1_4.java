@@ -19,7 +19,7 @@ import java.util.HashMap;
 public class NewActivity1_4 extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner sp1,sp2,sp3,sp4;
-    SpinnerList list,list2,list3,list4;
+   // SpinnerList list,list2,list3,list4;
     ArrayAdapter adapter1,adapter2,adapter3,adapter4;
     TextView textView1;
 
@@ -64,8 +64,8 @@ public class NewActivity1_4 extends AppCompatActivity implements AdapterView.OnI
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
-        String medItem = list.getitems(position);
-        inputSearch.setText(medItem);
+  //      String medItem = list.getitems(position);
+     //   inputSearch.setText(medItem);
     }
     public void onNothingSelected(AdapterView<?> parent) {
         textView1.setText("선택해주세요");

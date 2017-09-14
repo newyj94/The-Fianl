@@ -40,6 +40,7 @@ public class NewActivity3main extends AppCompatActivity implements View.OnClickL
 
        dbhp = new DBHelper(this);
         ArrayList array_list = dbhp.getAllmedicine();
+        //ArrayList array_list2 = dbhp.getAllnickname();
 
         mAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array_list);
 
@@ -56,7 +57,6 @@ public class NewActivity3main extends AppCompatActivity implements View.OnClickL
                Log.w("id값은들어가나???", Integer.toString(id));
                String item = (String) ((ListView) parent).getItemAtPosition(position);
                String[] strArray = item.split(" ");
-               //  firstId = strArray[0];
 
                SQLiteDatabase sdb = dbhp.getReadableDatabase();
                Cursor cursor = sdb.rawQuery("Select id from customer where medicine = '" + item + "';", null);
@@ -83,9 +83,9 @@ public class NewActivity3main extends AppCompatActivity implements View.OnClickL
 
     protected void onResume() {
         super.onResume();
-      //  mAdapter.clear();
-       // mAdapter.addAll(dbhp.getAllmedicine());
-       // mAdapter.notifyDataSetChanged();
+        mAdapter.clear();
+        mAdapter.addAll(dbhp.getAllmedicine());
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

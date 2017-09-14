@@ -40,7 +40,6 @@ import static org.jsoup.examples.HtmlToPlainText.main;
 
 public final class NewActivity1_3 extends AppCompatActivity {
 
-    SpinnerList list;
     TextView textView1;
     Elements link0, link1, link2, link3, link4, link5;
     private ListView lv;
